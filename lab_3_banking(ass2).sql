@@ -42,6 +42,7 @@ where Branch_name="Downtown" and Amount>1000;
 -- 6. Find the loan number of those loans with loan amounts between $1,400 and $2,000.
 select Loan_number from Loan_table
 where Amount  between 1400 and 2000;
+-- where amount >= 1400 and amount <= 2000;
 
 
 
@@ -60,6 +61,13 @@ order by Borrower_table.Customer_name;
 
 
 -- 9. Find the names of all branches that have assets greater than at least one branch located in Horseneck.
+select Branch_name
+from Account_table
+where Balance > (
+    select min(Balance)
+    from Account_table
+    where Branch_name="Horseneck"
+);
 
 
 
@@ -96,6 +104,7 @@ group by Branch_name;
 -- 14. Find all loan numbers that appear in the loan relation with null values for amount.
 select Loan_number from Loan_table
 where Amount=null;
+-- where Amount is null;
 
 
 

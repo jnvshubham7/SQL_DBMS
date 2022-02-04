@@ -141,6 +141,13 @@ order by Borrower_table.Customer_name;
 
 
 -- 9. Find the names of all branches that have assets greater than at least one branch located in Horseneck.
+select Branch_name
+from Account_table
+where Balance > (
+    select min(Balance)
+    from Account_table
+    where Branch_name="Horseneck"
+);
 
 
 
